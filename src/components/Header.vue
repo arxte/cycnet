@@ -7,9 +7,11 @@ const blocksStore = useBlocksStore()
 
 const burger = ref()
 const isOpen = ref()
+const zatem = ref()
 
 function activateBurger() {
   burger.value.style.transform = 'translateX(0%)'
+  zatem.value.style.transform = 'translateX(0%)'
   isOpen.value = true
   if (isOpen.value) {
     document.body.style.overflow = 'hidden'
@@ -18,6 +20,7 @@ function activateBurger() {
 
 function closeBurger() {
   burger.value.style.transform = 'translateX(100%)'
+  zatem.value.style.transform = 'translateX(100%)'
   isOpen.value = false
   if (!isOpen.value) {
     document.body.style.overflow = ''
@@ -67,8 +70,9 @@ function scrollToElement(element) {
         <div class="close-burger-line"></div>
         <div class="close-burger-lineTwo"></div>
       </div>
-      <!-- </div> -->
     </div>
+
+    <div class="zatem" @click="closeBurger()" ref="zatem"></div>
   </section>
 </template>
 

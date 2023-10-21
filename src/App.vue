@@ -20,7 +20,14 @@ const optionsMask = reactive({
   mask: '+7 (###) ###-##-##'
 })
 
+const name = ref()
+const surname = ref()
+const email = ref()
 const phone = ref('+7')
+const country = ref()
+const university = ref()
+const major = ref()
+const course = ref()
 const registerForm = ref()
 
 function scrollToAbout() {
@@ -68,11 +75,26 @@ function showAnswers() {
 async function sendData(event) {
   event.preventDefault()
 
-  const formSend = new FormData(registerForm.value)
-  await fetch('#', {
-    method: 'POST',
-    body: formSend
+  const data = JSON.stringify({
+    name: name.value,
+    surname: surname.value,
+    email: email.value,
+    phone: phone.value,
+    country: country.value,
+    university: university.value,
+    major: major.value,
+    course: course.value
   })
+  let response = await fetch('#', {
+    method: 'POST',
+    body: data
+  })
+
+  if (response.ok) {
+    window.location.replace(response)
+  } else {
+    console.log(response)
+  }
 }
 
 const swiperParams = {
@@ -186,7 +208,7 @@ onMounted(() => {
               We are waiting for you to make some big changes!
             </h2>
 
-            <button class="invitation__btn">Join Us Now!</button>
+            <button class="invitation__btn" @click="scrollToRegister()">Join Us Now!</button>
           </div>
         </div>
       </section>
@@ -400,7 +422,7 @@ onMounted(() => {
                 and be ready to gain beneficial experience and profitable networking
               </p>
 
-              <p class="register__admission">admission - 1500 tg</p>
+              <p class="register__admission">registration fee - 1500 tg</p>
             </div>
 
             <form
@@ -418,6 +440,7 @@ onMounted(() => {
                 name="name"
                 required
                 placeholder="Name"
+                v-model="name"
                 class="register__input"
               />
 
@@ -428,6 +451,7 @@ onMounted(() => {
                 name="surname"
                 required
                 placeholder="Surname"
+                v-model="surname"
                 class="register__input"
               />
 
@@ -438,6 +462,7 @@ onMounted(() => {
                 name="email"
                 required
                 placeholder="Email"
+                v-model="email"
                 class="register__input"
               />
 
@@ -460,6 +485,7 @@ onMounted(() => {
                 name="country"
                 required
                 placeholder="Select country"
+                v-model="country"
                 class="register__input"
               />
 
@@ -470,6 +496,7 @@ onMounted(() => {
                 name="university"
                 required
                 placeholder="University"
+                v-model="university"
                 class="register__input"
               />
 
@@ -480,6 +507,7 @@ onMounted(() => {
                 name="Major"
                 required
                 placeholder="Major"
+                v-model="major"
                 class="register__input"
               />
 
@@ -490,6 +518,7 @@ onMounted(() => {
                 name="course"
                 required
                 placeholder="Course"
+                v-model="course"
                 class="register__input"
               />
 
@@ -514,6 +543,11 @@ onMounted(() => {
             <h2 class="partners__title">Partners</h2>
 
             <div class="register-partners">
+              <img
+                src="./assets/svg/jko.svg"
+                alt="jko"
+                class="register-partners__item jko_desktop"
+              />
               <img src="./assets/svg/redhat.svg" alt="redhat" class="register-partners__item" />
 
               <img src="./assets/svg/cisco.svg" alt="cisco" class="register-partners__item" />
@@ -523,11 +557,13 @@ onMounted(() => {
               <img src="./assets/svg/sdu.svg" alt="sdu" class="register-partners__item" />
 
               <img src="./assets/svg/cycnet.svg" alt="cycnet" class="register-partners__item" />
-
-              <img src="./assets/svg/jko.svg" alt="jko" class="register-partners__item" />
             </div>
 
             <swiper-container ref="swiperPartnersUI" init="false" class="register-carousel">
+              <swiper-slide class="register-carousel__item jko">
+                <img src="./assets/svg/jko.svg" alt="jko" class="register-carousel__logo" />
+              </swiper-slide>
+
               <swiper-slide class="register-carousel__item">
                 <img src="./assets/svg/redhat.svg" alt="redhat" class="register-carousel__logo" />
               </swiper-slide>
@@ -550,10 +586,6 @@ onMounted(() => {
 
               <swiper-slide class="register-carousel__item">
                 <img src="./assets/svg/cycnet.svg" alt="cycnet" class="register-carousel__logo" />
-              </swiper-slide>
-
-              <swiper-slide class="register-carousel__item">
-                <img src="./assets/svg/jko.svg" alt="jko" class="register-carousel__logo" />
               </swiper-slide>
             </swiper-container>
 

@@ -14,3 +14,13 @@
   font-family: JostBold;
   src: url(../fonts/jost/Jost-Bold.ttf);
 }
+
+@font-face {
+  font-family: MontserratRegular;
+  src: url(../fonts/jost/Montserrat-Regular.ttf);
+}
+
+@font-face {
+  font-family: MontserratBold;
+  src: url(../fonts/jost/Montserrat-Bold.ttf);
+}

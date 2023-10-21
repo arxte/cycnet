@@ -154,7 +154,7 @@ main {
 
 .about-carousel-item__title,
 .about-carousel-item__title_desktop {
-  font-family: 'JostSemiBold', sans-serif;
+  font-family: 'MontserratRegular', sans-serif;
   font-size: 1.718875em;
   line-height: 140%;
   letter-spacing: 1.65px;
@@ -162,7 +162,7 @@ main {
 
 .about-carousel-item-wrapper,
 .about-carousel-item-wrapper_desktop {
-  font-family: 'JostBold', sans-serif;
+  font-family: 'MontserratBold', sans-serif;
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -515,6 +515,18 @@ main {
   max-width: 140px;
 }
 
+.jko {
+  border-bottom: 1px solid gold;
+  // text-decoration: 1px solid white;
+  padding-bottom: 3px;
+  max-width: 180px;
+}
+
+.jko_desktop {
+  border-bottom: 3px solid gold;
+  padding-bottom: 10px;
+}
+
 .register-carousel__logo {
   height: 37px;
   max-width: 140px;
@@ -685,7 +697,7 @@ main {
   display: none;
 }
 
-@media (min-width: 480px) {
+@media (min-width: 320px) {
   .desktop_animation_video {
     position: absolute;
     z-index: 2;
@@ -1081,13 +1093,14 @@ main {
     min-width: 100%;
     justify-content: space-between;
     box-sizing: border-box;
+    // gap: 0px;
   }
 
   .header-wrapper_desktop {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 200px;
+    gap: 50px;
   }
 
   .header__logo_desktop {
