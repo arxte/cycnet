@@ -67,6 +67,23 @@ main {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  position: relative;
+}
+
+.desktop_animation_video {
+  position: absolute;
+  z-index: 2;
+  height: 300px;
+  min-height: 300px;
+  max-height: 300px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.destop_anm_video {
+  height: 300px;
+  min-height: 300px;
+  max-height: 300px;
 }
 
 .about-wrapper {
@@ -420,7 +437,7 @@ main {
   color: #ebebeb;
   font-family: 'JostSemiBold', sans-serif;
   font-size: 2.6875em;
-  line-height: 154%;
+  // line-height: 154%;
 }
 
 .register__text {
@@ -518,13 +535,23 @@ main {
 .jko {
   border-bottom: 1px solid gold;
   // text-decoration: 1px solid white;
-  padding-bottom: 3px;
+  // padding-bottom: 3px;
   max-width: 180px;
+}
+
+.techgarden {
+  border-bottom: 1px solid gold;
+}
+
+.techgarden_desktop {
+  border-bottom: 3px solid gold;
+  // position: relative;
 }
 
 .jko_desktop {
   border-bottom: 3px solid gold;
-  padding-bottom: 10px;
+  // position: relative;
+  // padding-bottom: 10px;
 }
 
 .register-carousel__logo {
@@ -698,25 +725,38 @@ main {
 }
 
 @media (min-width: 320px) {
-  .desktop_animation_video {
-    position: absolute;
-    z-index: 2;
-    height: 300px;
-    min-height: 300px;
-    max-height: 300px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .destop_anm_video {
-    height: 300px;
-    min-height: 300px;
-    max-height: 300px;
-  }
-
   .about-title-wrapper {
     position: relative;
     z-index: 3;
+  }
+}
+
+// @media (min-width: 1650px) {
+//   .desktop_animation_video {
+//     position: static;
+//     // position: relative;
+//     left: 0;
+//     top: 50%;
+//     transform: translateY(-50%);
+//   }
+
+//   .destop_anm_video {
+//     height: 100%;
+//     min-height: 100%;
+//     max-height: 100%;
+//     max-width: 100%;
+//   }
+// }
+
+@media (min-width: 1535px) {
+  .register__title {
+    line-height: 154%;
+  }
+}
+
+@media (min-width: 1670px) {
+  .about-carousel {
+    padding-top: 50px;
   }
 }
 
@@ -793,14 +833,15 @@ main {
   }
 
   .desktop_animation_video {
-    position: static;
-    // position: relative;
-    left: 0;
-    transform: translateX(0);
+    top: 0;
+    // left: -50%;
+    // transform: translateX(50%);
     z-index: 2;
     height: 300px;
     min-width: 700px;
     min-height: 700px;
+    // top: -45%;
+    // transform: translateY(45%);
   }
 
   .invitation__title_desktop {
@@ -1121,5 +1162,28 @@ main {
     border-bottom: 1px solid #ebebeb;
     padding-bottom: 10px;
     cursor: pointer;
+  }
+}
+
+@media (min-width: 1800px) {
+  .desktop_animation_video {
+    position: static;
+    // left: -50%;
+    // transform: translateX(50%);
+    top: -50%;
+    transform: translateY(50%);
+    min-height: 400px;
+    max-height: 400px;
+    height: 400px;
+    width: 400px;
+    min-width: 400px;
+  }
+
+  .destop_anm_video {
+    min-height: 400px;
+    max-height: 400px;
+    height: 400px;
+    width: 400px;
+    min-width: 400px;
   }
 }

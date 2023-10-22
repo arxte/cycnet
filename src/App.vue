@@ -79,21 +79,33 @@ async function sendData(event) {
     name: name.value,
     surname: surname.value,
     email: email.value,
-    phone: phone.value,
+    phone_number: phone.value,
     country: country.value,
     university: university.value,
     major: major.value,
     course: course.value
   })
-  let response = await fetch('#', {
+  let response = await fetch('http://127.0.0.1:8000/api/v1/registration/', {
     method: 'POST',
-    body: data
+    body: data,
+    headers: {
+      'Content-Type': 'application/json'
+    }
   })
+  console.log(response)
+  console.log(response.url)
 
   if (response.ok) {
-    window.location.replace(response)
+    const responseData = await response.json()
+    if (responseData.redirect_url) {
+      window.location.href = responseData.redirect_url
+    } else {
+      console.log('No redirect_url found in the response.')
+    }
+  } else if (response.status === 409) {
+    console.log('Email already registered')
   } else {
-    console.log(response)
+    console.log('Request failed with status: ' + response.status)
   }
 }
 
@@ -548,6 +560,13 @@ onMounted(() => {
                 alt="jko"
                 class="register-partners__item jko_desktop"
               />
+
+              <img
+                src="./assets/svg/techgarden.svg"
+                alt="techgarden"
+                class="register-partners__item techgarden_desktop"
+              />
+
               <img src="./assets/svg/redhat.svg" alt="redhat" class="register-partners__item" />
 
               <img src="./assets/svg/cisco.svg" alt="cisco" class="register-partners__item" />
@@ -562,6 +581,14 @@ onMounted(() => {
             <swiper-container ref="swiperPartnersUI" init="false" class="register-carousel">
               <swiper-slide class="register-carousel__item jko">
                 <img src="./assets/svg/jko.svg" alt="jko" class="register-carousel__logo" />
+              </swiper-slide>
+
+              <swiper-slide class="register-carousel__item techgarden">
+                <img
+                  src="./assets/svg/techgarden.svg"
+                  alt="techgarden"
+                  class="register-carousel__logo techgarden"
+                />
               </swiper-slide>
 
               <swiper-slide class="register-carousel__item">
